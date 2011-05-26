@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+   id="org.jnegre.foghorn"
+   name="Foghorn"
+   version="1.0.2"
+   provider-name="Jérôme Nègre"
+   class="org.jnegre.foghorn.FoghornPlugin">
+
+   <runtime>
+      <library name="foghorn.jar"/>
+   </runtime>
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.resources"/>
+   </requires>
+
+
+<!-- builder -->
+   <extension
+         id="builder"
+         name="Foghorn"
+         point="org.eclipse.core.resources.builders">
+      <builder>
+         <run
+               class="org.jnegre.foghorn.Builder">
+         </run>
+      </builder>
+   </extension>
+<!-- Définition du groupe de menu -->
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="org.jnegre.foghorn.contribution0"
+            nameFilter="*"
+            objectClass="org.eclipse.core.resources.IProject">
+         <action
+               label="Activate"
+               class="org.jnegre.foghorn.ActivateFoghornAction"
+               menubarPath="org.jnegre.foghorn.menu1/group1"
+               enablesFor="1"
+               id="org.jnegre.foghorn.action.activate">
+         </action>
+         <menu
+               label="Foghorn"
+               path="additions"
+               id="org.jnegre.foghorn.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+      </objectContribution>
+   </extension>
+   <!--
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IProject"
+            nameFilter="*"
+            id="org.jnegre.styloplume.contribution1">
+         <action
+               label="Activate"
+               class="org.jnegre.foghorn.ActivateFoghornAction"
+               menubarPath="org.jnegre.foghorn.menu1/group1"
+               enablesFor="1"
+               id="org.jnegre.foghorn.action.activate">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IProject"
+            nameFilter="*"
+            id="org.jnegre.styloplume.contribution2">
+         <action
+               label="Deactivate"
+               class="org.jnegre.foghorn.DeactivateFoghornAction"
+               menubarPath="org.jnegre.foghorn.menu1/group1"
+               enablesFor="1"
+               id="org.jnegre.foghorn.action.deactivate">
+         </action>
+      </objectContribution>
+   </extension>
+-->
+</plugin>
